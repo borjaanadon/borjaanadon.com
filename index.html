@@ -4,11 +4,14 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Borja Anadón</title>
-<meta name="description" content="Borja Anadón. Growth and Go-To-Market, Madrid. The twelve rules I try to live by.">
+<meta name="description" content="Borja Anadón. Growth and Go-To-Market, Madrid. My rules, my readings, my projects and my races.">
 <meta property="og:title" content="Borja Anadón">
-<meta property="og:description" content="Growth and Go-To-Market, Madrid. The twelve rules I try to live by.">
+<meta property="og:description" content="Growth and Go-To-Market, Madrid. My rules, my readings, my projects and my races.">
 <meta property="og:image" content="https://borjaanadon.com/borja_hero.jpg">
 <meta property="og:url" content="https://borjaanadon.com/">
+<link rel="icon" href="favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="favicon-64.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="favicon-64.png">
 <link rel="preload" href="archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
 <style>
 @font-face{
@@ -27,7 +30,6 @@
   --rule-soft:#E9E9E5;
   --sans:'Archivo',-apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;
   --mono:ui-monospace,'SF Mono','Cascadia Mono','Roboto Mono',Consolas,monospace;
-  --measure:64ch;
 }
 @media (prefers-color-scheme:dark){
   :root:not([data-theme="light"]){
@@ -61,39 +63,22 @@ body{
   -webkit-font-smoothing:antialiased;
   font-synthesis-weight:none;
 }
-.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
-
-/* ---------- shared section grid ---------- */
-.sec{
-  display:grid;
-  grid-template-columns:150px minmax(0,1fr);
-  gap:clamp(20px,5vw,56px);
-  padding:clamp(48px,7vw,86px) 0;
-  border-top:1px solid var(--rule);
-}
-.rail{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);padding-top:.5em}
-.rail b{display:block;color:var(--ink);font-weight:400}
-.col{max-width:var(--measure)}
-@media (max-width:720px){
-  .sec{grid-template-columns:1fr;gap:18px}
-  .rail{padding-top:0}
-}
+.wrap{max-width:1320px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
 
 /* ---------- hero ---------- */
 .hero{
   display:grid;
-  grid-template-columns:minmax(0,1fr) 268px;
-  gap:clamp(28px,6vw,64px);
+  grid-template-columns:minmax(0,1fr) 300px;
+  gap:clamp(28px,6vw,72px);
   align-items:start;
-  padding:clamp(52px,9vw,110px) 0 clamp(40px,6vw,72px);
+  padding:clamp(52px,8vw,100px) 0 clamp(36px,5vw,60px);
 }
-.hero h1{margin-top:-.1em}
 h1{
   font-size:clamp(2.7rem,8vw,5rem);
   line-height:.94;
   letter-spacing:-.035em;
   font-weight:600;
-  margin:0 0 .5rem;
+  margin:-.1em 0 .5rem;
   text-wrap:balance;
 }
 .role{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 1.9rem}
@@ -101,14 +86,37 @@ h1{
 .contact a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:2px;transition:border-color .18s}
 .contact a:hover{border-bottom-color:var(--ink)}
 .contact svg{vertical-align:-2px;margin-right:.42em}
+.intro{margin:2.4rem 0 0;max-width:60ch}
+.intro p{margin:0 0 .8rem;font-size:clamp(1.05rem,1.6vw,1.2rem);line-height:1.5;letter-spacing:-.008em}
+.intro p:last-child{margin-bottom:0;color:var(--muted)}
 
 .portrait{margin:0}
 .portrait img{width:100%;height:auto;display:block;filter:grayscale(1) contrast(1.03)}
 .portrait figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-top:.75rem}
-@media (max-width:720px){
-  .hero{grid-template-columns:1fr;align-items:start}
+@media (max-width:760px){
+  .hero{grid-template-columns:1fr}
   .portrait{order:-1;max-width:210px}
+  h1{margin-top:0}
 }
+
+/* ---------- tabs ---------- */
+.tabs{
+  display:flex;gap:clamp(18px,3.5vw,44px);
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+  overflow-x:auto;scrollbar-width:none;
+}
+.tabs::-webkit-scrollbar{display:none}
+.tab{
+  font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--faint);background:none;border:0;padding:1.05rem 0 .95rem;cursor:pointer;
+  border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;
+  transition:color .18s,border-color .18s;
+}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.tabpanel{padding:clamp(28px,4vw,48px) 0 clamp(48px,7vw,86px)}
+.tabpanel[hidden]{display:none}
+.content{max-width:none}
 
 /* ---------- disclosure lists ---------- */
 .list{border-top:1px solid var(--rule-soft)}
@@ -133,20 +141,49 @@ h1{
 .panel{display:none;padding:0 0 1.5rem 2.9rem}
 .panel.open{display:block;animation:reveal .26s ease}
 @keyframes reveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
-.panel p{margin:0 0 .95rem;max-width:58ch}
+.panel p{margin:0 0 .95rem;max-width:68ch}
 .panel p:last-child{margin-bottom:0}
 @media (max-width:720px){
   .trigger{grid-template-columns:1.9rem minmax(0,1fr) 1.2rem}
   .panel{padding-left:1.9rem}
 }
 
+/* ---------- link / row lists (readings, projects, races) ---------- */
+.group{margin:0 0 clamp(30px,4vw,44px)}
+.group:last-child{margin-bottom:0}
+.group h2{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:400;margin:0 0 .4rem}
+.rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule-soft)}
+.rows li{
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.4rem 1.5rem;align-items:baseline;
+  padding:1rem 0;border-bottom:1px solid var(--rule-soft);
+}
+.rows .title{justify-self:start;font-size:1.06rem;letter-spacing:-.012em;font-weight:500;line-height:1.4}
+.rows a.title{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);transition:border-color .18s}
+.rows a.title:hover{border-bottom-color:var(--ink)}
+.rows a.title::after{content:'\2197';font-weight:400;font-size:.85em;margin-left:.3em;color:var(--faint)}
+.rows .meta{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--muted);text-align:right;white-space:nowrap}
+.rows .meta.soon{color:var(--faint);text-transform:uppercase;letter-spacing:.12em;font-size:11px}
+.rows .sub{grid-column:1 / -1;font-size:14.5px;color:var(--muted);margin-top:-.2rem}
+@media (max-width:560px){
+  .rows li{grid-template-columns:1fr}
+  .rows .meta{text-align:left}
+}
+
+/* races table */
+.races{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.races th{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:400;text-align:left;padding:0 1rem .5rem 0;border-bottom:1px solid var(--rule-soft)}
+.races td{padding:1rem 1rem 1rem 0;border-bottom:1px solid var(--rule-soft);vertical-align:baseline}
+.races th:last-child,.races td:last-child{text-align:right;padding-right:0}
+.races .race{font-size:1.06rem;letter-spacing:-.012em;font-weight:500}
+.races .date{font-family:var(--mono);font-size:12.5px;color:var(--muted);white-space:nowrap}
+.races .time{font-family:var(--mono);font-size:14px;white-space:nowrap}
+.races .soon{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint)}
+
 /* ---------- footer ---------- */
 footer{border-top:1px solid var(--rule);padding:clamp(38px,6vw,62px) 0 clamp(46px,7vw,72px);color:var(--muted);font-size:15px}
-footer p{margin:0 0 .6rem;max-width:58ch}
+footer p{margin:0 0 .6rem;max-width:62ch}
 footer p:last-child{margin-bottom:0}
 footer .thanks{font-size:clamp(1.1rem,2.4vw,1.35rem);letter-spacing:-.014em;color:var(--ink)}
-footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
-footer a:hover{border-bottom-color:var(--ink)}
 
 :focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 @media (prefers-reduced-motion:reduce){
@@ -166,6 +203,10 @@ footer a:hover{border-bottom-color:var(--ink)}
         <li><a href="https://www.linkedin.com/in/borja-anadon-fernandez/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>in/borja-anadon-fernandez</a></li>
         <li><a href="https://x.com/borja99borja" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@borja99borja</a></li>
       </ul>
+      <div class="intro">
+        <p>Welcome to my personal page! This is the place to get to know me better: what I believe, what I find interesting, and what I am working on at the moment.</p>
+        <p>Big fan of startups, technology, the humanities in all their forms, and endurance sports.</p>
+      </div>
     </div>
     <figure class="portrait">
       <img src="borja_hero.jpg" alt="Borja Anadón" width="700" height="875">
@@ -173,9 +214,16 @@ footer a:hover{border-bottom-color:var(--ink)}
     </figure>
   </header>
 
-  <section class="sec">
-    <div class="rail"><b>My 12 rules for life</b></div>
-    <div class="col">
+  <nav class="tabs" role="tablist" aria-label="Sections">
+    <button class="tab" role="tab" id="tab-rules" aria-controls="rules" aria-selected="true">My rules</button>
+    <button class="tab" role="tab" id="tab-readings" aria-controls="readings" aria-selected="false" tabindex="-1">My readings</button>
+    <button class="tab" role="tab" id="tab-projects" aria-controls="projects" aria-selected="false" tabindex="-1">My projects</button>
+    <button class="tab" role="tab" id="tab-races" aria-controls="races" aria-selected="false" tabindex="-1">My races</button>
+  </nav>
+
+  <!-- ===== My rules ===== -->
+  <section class="tabpanel" id="rules" role="tabpanel" aria-labelledby="tab-rules">
+    <div class="content">
       <div class="list">
 
         <div class="item">
@@ -349,14 +397,77 @@ footer a:hover{border-bottom-color:var(--ink)}
     </div>
   </section>
 
+  <!-- ===== My readings ===== -->
+  <section class="tabpanel" id="readings" role="tabpanel" aria-labelledby="tab-readings" hidden>
+    <div class="content">
+
+      <div class="group">
+        <h2>Startups &amp; growth</h2>
+        <ul class="rows">
+          <li><a class="title" href="https://www.paulgraham.com/ds.html" target="_blank" rel="noopener noreferrer">Do Things that Don't Scale</a><span class="meta">Paul Graham</span></li>
+          <li><a class="title" href="https://www.nfx.com/post/find-the-fast-moving-water" target="_blank" rel="noopener noreferrer">Find the Fast Moving Water</a><span class="meta">NFX</span></li>
+          <li><a class="title" href="https://www.lennysnewsletter.com/p/how-the-most-successful-b2b-startups" target="_blank" rel="noopener noreferrer">How the most successful B2B startups came up with their original idea</a><span class="meta">Lenny's Newsletter</span></li>
+          <li><a class="title" href="https://www.lennysnewsletter.com/p/the-racecar-growth-frameworkexpanded" target="_blank" rel="noopener noreferrer">The Racecar Growth Framework, expanded and illustrated</a><span class="meta">Lenny's Newsletter</span></li>
+          <li><a class="title" href="https://www.lennysnewsletter.com/p/consumer-business-find-first-users" target="_blank" rel="noopener noreferrer">How to kickstart a consumer business: find your early adopters</a><span class="meta">Lenny's Newsletter</span></li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <h2>Talent &amp; ambition</h2>
+        <ul class="rows">
+          <li><a class="title" href="https://paulgraham.com/greatwork.html" target="_blank" rel="noopener noreferrer">How to Do Great Work</a><span class="meta">Paul Graham</span></li>
+          <li><a class="title" href="https://www.highagency.com/" target="_blank" rel="noopener noreferrer">High Agency in 30 Minutes</a><span class="meta">George Mack</span></li>
+          <li><a class="title" href="https://www.economist.com/leaders/2025/09/25/the-desperate-search-for-superstar-talent" target="_blank" rel="noopener noreferrer">The desperate search for superstar talent</a><span class="meta">The Economist</span></li>
+        </ul>
+      </div>
+
+      <div class="group">
+        <h2>Society &amp; humanities</h2>
+        <ul class="rows">
+          <li><a class="title" href="https://www.state.gov/releases/office-of-the-spokesman/2026/10/secretary-of-state-marco-rubio-remarks" target="_blank" rel="noopener noreferrer">Marco Rubio's speech at the Pnyx, Athens</a><span class="meta">U.S. Department of State</span></li>
+          <li><a class="title" href="https://www.linkedin.com/pulse/from-townhall-living-room-evolution-social-media-opportunity-we-pusnf/" target="_blank" rel="noopener noreferrer">From Townhall to Living Room: the evolution of social media</a><span class="meta">Talent First by Nova</span></li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ===== My projects ===== -->
+  <section class="tabpanel" id="projects" role="tabpanel" aria-labelledby="tab-projects" hidden>
+    <div class="content">
+      <ul class="rows">
+        <li><span class="title">Daigest</span><span class="meta soon">Coming soon</span></li>
+        <li><span class="title">My mental palace</span><span class="meta soon">Coming soon</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== My races ===== -->
+  <section class="tabpanel" id="races" role="tabpanel" aria-labelledby="tab-races" hidden>
+    <div class="content">
+      <table class="races">
+        <thead>
+          <tr><th scope="col">Race</th><th scope="col">Date</th><th scope="col">Time</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="race">Ironman 70.3 Cascais</td><td class="date">Oct 2026</td><td class="soon">Coming soon</td></tr>
+          <tr><td class="race">Madrid Marathon</td><td class="date">Apr 2026</td><td class="time">3h 23min</td></tr>
+          <tr><td class="race">San Sebastián Marathon</td><td class="date">Nov 2025</td><td class="time">3h 09min</td></tr>
+          <tr><td class="race">Valencia Marathon</td><td class="date">Dec 2024</td><td class="time">3h 34min</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
   <footer>
     <p class="thanks">Thanks for reading.</p>
-    <p>A living document. A rule changes when I learn something that proves it wrong. Last revised October 2026.</p>
+    <p>A living document, updated as I learn. Last revised October 2026.</p>
   </footer>
 </div>
 
 <script>
 (function(){
+  // Disclosure lists
   document.querySelectorAll('.trigger').forEach(function(btn){
     btn.addEventListener('click', function(){
       var open = btn.getAttribute('aria-expanded') === 'true';
@@ -365,6 +476,38 @@ footer a:hover{border-bottom-color:var(--ink)}
       panel.classList.toggle('open', !open);
     });
   });
+
+  // Tabs (deep-linkable: #rules, #readings, #projects, #races)
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  function select(id, focus){
+    tabs.forEach(function(t){
+      var on = t.getAttribute('aria-controls') === id;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      if(on && focus) t.focus();
+    });
+  }
+  tabs.forEach(function(t, i){
+    t.addEventListener('click', function(){
+      var id = t.getAttribute('aria-controls');
+      select(id);
+      history.replaceState(null, '', '#' + id);
+    });
+    t.addEventListener('keydown', function(e){
+      var d = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if(!d) return;
+      var n = tabs[(i + d + tabs.length) % tabs.length];
+      select(n.getAttribute('aria-controls'), true);
+      history.replaceState(null, '', '#' + n.getAttribute('aria-controls'));
+    });
+  });
+  function fromHash(){
+    var h = location.hash.slice(1), el = h && document.getElementById(h);
+    if(el && el.classList.contains('tabpanel')) select(h);
+  }
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
 })();
 </script>
 </body>
