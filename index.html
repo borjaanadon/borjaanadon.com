@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Borja Anadón</title>
+<meta name="description" content="Borja Anadón. Growth and Go-To-Market, Madrid. The twelve rules I try to live by.">
+<meta property="og:title" content="Borja Anadón">
+<meta property="og:description" content="Growth and Go-To-Market, Madrid. The twelve rules I try to live by.">
+<meta property="og:image" content="https://borjaanadon.com/borja_hero.jpg">
+<meta property="og:url" content="https://borjaanadon.com/">
+<link rel="preload" href="archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{
+  font-family:'Archivo';
+  src:url(archivo-latin.woff2) format('woff2');
+  font-weight:400 700; font-style:normal; font-display:block;
+}
+
+:root{
+  --paper:#F5F5F3;
+  --panel:#FFFFFF;
+  --ink:#0E0E0D;
+  --muted:#66665F;
+  --faint:#9C9C95;
+  --rule:#DCDCD7;
+  --rule-soft:#E9E9E5;
+  --sans:'Archivo',-apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;
+  --mono:ui-monospace,'SF Mono','Cascadia Mono','Roboto Mono',Consolas,monospace;
+  --measure:64ch;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0B0B0A;
+    --panel:#131312;
+    --ink:#ECECE8;
+    --muted:#95958D;
+    --faint:#67675F;
+    --rule:#262623;
+    --rule-soft:#1C1C1A;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0B0B0A;
+  --panel:#131312;
+  --ink:#ECECE8;
+  --muted:#95958D;
+  --faint:#67675F;
+  --rule:#262623;
+  --rule-soft:#1C1C1A;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  font-synthesis-weight:none;
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 clamp(20px,5vw,56px)}
+
+/* ---------- shared section grid ---------- */
+.sec{
+  display:grid;
+  grid-template-columns:150px minmax(0,1fr);
+  gap:clamp(20px,5vw,56px);
+  padding:clamp(48px,7vw,86px) 0;
+  border-top:1px solid var(--rule);
+}
+.rail{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);padding-top:.5em}
+.rail b{display:block;color:var(--ink);font-weight:400}
+.col{max-width:var(--measure)}
+@media (max-width:720px){
+  .sec{grid-template-columns:1fr;gap:18px}
+  .rail{padding-top:0}
+}
+
+/* ---------- hero ---------- */
+.hero{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 268px;
+  gap:clamp(28px,6vw,64px);
+  align-items:start;
+  padding:clamp(52px,9vw,110px) 0 clamp(40px,6vw,72px);
+}
+.hero h1{margin-top:-.1em}
+h1{
+  font-size:clamp(2.7rem,8vw,5rem);
+  line-height:.94;
+  letter-spacing:-.035em;
+  font-weight:600;
+  margin:0 0 .5rem;
+  text-wrap:balance;
+}
+.role{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:0 0 1.9rem}
+.contact{display:flex;flex-wrap:wrap;gap:.55rem 1.6rem;font-family:var(--mono);font-size:13.5px;margin:0;padding:0;list-style:none}
+.contact a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);padding-bottom:2px;transition:border-color .18s}
+.contact a:hover{border-bottom-color:var(--ink)}
+.contact svg{vertical-align:-2px;margin-right:.42em}
+
+.portrait{margin:0}
+.portrait img{width:100%;height:auto;display:block;filter:grayscale(1) contrast(1.03)}
+.portrait figcaption{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-top:.75rem}
+@media (max-width:720px){
+  .hero{grid-template-columns:1fr;align-items:start}
+  .portrait{order:-1;max-width:210px}
+}
+
+/* ---------- disclosure lists ---------- */
+.list{border-top:1px solid var(--rule-soft)}
+.item{border-bottom:1px solid var(--rule-soft)}
+.trigger{
+  width:100%;display:grid;grid-template-columns:2.4rem minmax(0,1fr) 1.4rem;
+  gap:.5rem;align-items:baseline;
+  background:none;border:0;padding:1.15rem 0;
+  font:inherit;color:inherit;text-align:left;cursor:pointer;
+}
+.trigger .num{font-family:var(--mono);font-size:11.5px;color:var(--faint);letter-spacing:.06em}
+.trigger .head{font-size:1.06rem;letter-spacing:-.012em;font-weight:500;line-height:1.4}
+.trigger .teaser{display:block;font-size:14.5px;font-weight:400;color:var(--muted);margin-top:.25rem;letter-spacing:0}
+.trigger .sign{position:relative;height:1em;justify-self:end;align-self:center}
+.trigger .sign::before,.trigger .sign::after{
+  content:'';position:absolute;right:0;top:50%;width:12px;height:1.5px;background:var(--ink);
+  transition:transform .22s ease;
+}
+.trigger .sign::after{transform:rotate(90deg)}
+.trigger[aria-expanded="true"] .sign::after{transform:rotate(0deg)}
+.trigger:hover .head{opacity:.6}
+.panel{display:none;padding:0 0 1.5rem 2.9rem}
+.panel.open{display:block;animation:reveal .26s ease}
+@keyframes reveal{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.panel p{margin:0 0 .95rem;max-width:58ch}
+.panel p:last-child{margin-bottom:0}
+@media (max-width:720px){
+  .trigger{grid-template-columns:1.9rem minmax(0,1fr) 1.2rem}
+  .panel{padding-left:1.9rem}
+}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--rule);padding:clamp(38px,6vw,62px) 0 clamp(46px,7vw,72px);color:var(--muted);font-size:15px}
+footer p{margin:0 0 .6rem;max-width:58ch}
+footer p:last-child{margin-bottom:0}
+footer .thanks{font-size:clamp(1.1rem,2.4vw,1.35rem);letter-spacing:-.014em;color:var(--ink)}
+footer a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule)}
+footer a:hover{border-bottom-color:var(--ink)}
+
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div>
+      <h1>Borja&nbsp;Anadón</h1>
+      <p class="role">Growth &amp; Go-To-Market &nbsp;·&nbsp; Madrid</p>
+      <ul class="contact">
+        <li><a href="mailto:hi@borjaanadon.com"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>hi@borjaanadon.com</a></li>
+        <li><a href="https://www.linkedin.com/in/borja-anadon-fernandez/" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>in/borja-anadon-fernandez</a></li>
+        <li><a href="https://x.com/borja99borja" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>@borja99borja</a></li>
+      </ul>
+    </div>
+    <figure class="portrait">
+      <img src="borja_hero.jpg" alt="Borja Anadón" width="700" height="875">
+      <figcaption>Madrid, 2026</figcaption>
+    </figure>
+  </header>
+
+  <section class="sec">
+    <div class="rail"><b>My 12 rules for life</b></div>
+    <div class="col">
+      <div class="list">
+
+        <div class="item">
+          <button class="trigger" aria-expanded="false" aria-controls="r1">
+            <span class="num">01</span>
+            <span class="head">Beat Yesterday
+              <span class="teaser">Compare yourself to who you were yesterday, not to who someone else is today.</span>
+            </span>
+            <span class="sign" aria-hidden="true"></span>
+          </button>
+          <div class="panel" id="r1">
+            <p>Your own progress is the only honest benchmark. Everyone started somewhere you cannot see, so their highlight reel tells you nothing. Move one habit, one number, one rep forward today and let it compound.</p>
+            <p>The reason to bother: the pursuit of excellence is the very principle of man's existence. Excellence in the work, in the body, in how you treat people and in how you rest.</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <button class="trigger" aria-expanded="false" aria-controls="r2">
+            <span class="num">02</span>
+            <span class="head">Ship, Don't Polish
+              <span class="teaser">Impatient on actions, patient on results.</span>
+            </span>
+            <span class="sign" aria-hidden="true"></span>
+          </button>
+          <div class="panel" id="r2">
+            <p>Ten rough attempts teach more than one perfect attempt still in progress. Think in the quiet first. Once you know what to do, stop planning and move.</p>
+            <p>Speed belongs to the effort. Patience belongs to the results, which always take longer than you would like.</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <button class="trigger" aria-expanded="false" aria-controls="r3">
+            <span class="num">03</span>
+            <span class="head">Two Things, Done Right
+              <span class="teaser">One or two things a day, done well. Protect the focus.</span>
+            </span>
+            <span class="sign" aria-hidden="true"></span>
+          </button>
+          <div class="panel" id="r3">
+            <p>Attention is the scarcest currency you own. Spread it across ten open tabs and you finish none of them. Depth is a choice you make every time you say no.</p>
+            <p>Protect the silence, even the boredom: quiet is good for thinking. And watch what you feed your mind, because it becomes what it consumes.</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <button class="trigger" aria-expanded="false" aria-controls="r4">
+            <span class="num">04</span>
+            <span class="head">Forge the Body, Feed the Soul
+              <span class="teaser">Discipline is sacrifice with a direction.</span>
+            </span>
+            <span class="sign" aria-hidden="true"></span>
+          </button>
+          <div class="panel" id="r4">
+            <p>Trade the easy now for the future you want, and let the body carry the proof: the miles you did not skip, the reps nobody clapped for.</p>
+            <p>What truly matters takes time, and the wait is what gives the reward its weight. Difficult things have meaning because they are difficult, as long as they point at something worth reaching. Still, do not postpone living until the finish line. Savor the road.</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <button class="trigger" aria-expanded="false" aria-controls="r5">
+            <span class="num">05</span>
+            <span class="head">Be the Protagonist
+              <span class="teaser">Pick up the weight. Responsibility is the wheel, blame is the passenger seat.</span>
+            </span>
+            <span class="sign" aria-hidden="true"></span>
+          </button>
+          <div class="panel" id="r5">
+            <p>Meaning shows up when you carry the weight instead of dodging it. Obstacles are what give meaning, so there is meaning to find in any situation, even the ones you would never choose.</p>
+            <p>Problems never run out: solve one and the next walks in. Since they are guaranteed, the only real variable is how you meet them, as puzzles to crack rather than insults to resent. Anger is just arguing with reality.</p>
+            <p>Split everything into two piles, what depends on you and what does not. Put all your effort into the first and not a single worry into the second. Fretting over what you cannot control is suffering twice.</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <button class="trigger" aria-expanded="false" aria-controls="r6">
+            <span class="num">06</span>
+            <span class="head">Assume They Know More
+              <span class="teaser">Listen as if the other person holds the piece you are missing.</span>
+            </span>
+            <span class="sign" aria-hidden="true"></span>
+          </button>
+          <div class="panel" id="r6">
+            <p>Wisdom is the hunger to keep asking, more than the pile of answers you already have. The moment you feel certain you know it all is the moment you stop growing.</p>
+            <p>It also changes how you disagree. Challenge from listening rather than from certainty.</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <button class="trigger" aria-expanded="false" aria-controls="r7">
+            <span class="num">07</span>
+            <span class="head">Stay a Beginner
+              <span class="teaser">Understand how things work. Choose learning over comfort.</span>
+            </span>
+            <span class="sign" aria-hidden="true"></span>
+          </button>
+          <div class="panel" id="r7">
+            <p>Keep the eyes of a kid taking a machine apart to see how it ticks. Go to first principles.</p>
+            <p>When the ground gets comfortable, take it as the cue to choose the path that teaches. Embrace change and uncertainty instead of fighting them: the unknown is where the learning happens.</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <button class="trigger" aria-expanded="false" aria-controls="r8">
+            <span class="num">08</span>
+            <span class="head">Passion Moves Mountains
+              <span class="teaser">Energy is contagious, and so is the lack of it.</span>
+            </span>
+            <span class="sign" aria-hidden="true"></span>
+          </button>
+          <div class="panel" id="r8">
+            <p>Put real fire behind what you do and people lean in, doors open, dead weight starts to shift. It shows in the output. Do it with heart, or do not lift it at all.</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <button class="trigger" aria-expanded="false" aria-controls="r9">
+            <span class="num">09</span>
+            <span class="head">Quiet, Relentless Ambition
+              <span class="teaser">Raise the level of your ambition. Do not fear being different.</span>
+            </span>
+            <span class="sign" aria-hidden="true"></span>
+          </button>
+          <div class="panel" id="r9">
+            <p>The ambition that counts is intellectual: the problems you choose, how well you solve them, how much you come to know. Stay humble and be loud only in your output. The obvious road is crowded precisely because it is obvious.</p>
+            <p>The engine is enjoying the game. "I will enjoy it once I hit X" is a deal that never pays out, because every milestone drops you among faster people. In every field the greatest are the ones who lasted longest, and it is hard to compete with someone who is having fun.</p>
+            <p>You do not need to be special. You need to be what most people will not be: consistent, determined, willing to do the work without shortcuts. Talent is rare. Consistency is rarer.</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <button class="trigger" aria-expanded="false" aria-controls="r10">
+            <span class="num">10</span>
+            <span class="head">Don't Lie, Don't Betray Yourself
+              <span class="teaser">Integrity is the floor the other eleven stand on.</span>
+            </span>
+            <span class="sign" aria-hidden="true"></span>
+          </button>
+          <div class="panel" id="r10">
+            <p>Every lie, said out loud or to your own reflection, chips a piece off your spine. Refuse to do what you would despise in someone else, especially when nobody is watching. Character is forged without witnesses.</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <button class="trigger" aria-expanded="false" aria-controls="r11">
+            <span class="num">11</span>
+            <span class="head">Make Your People Strong
+              <span class="teaser">Strong, not dependent.</span>
+            </span>
+            <span class="sign" aria-hidden="true"></span>
+          </button>
+          <div class="panel" id="r11">
+            <p>Caring for people means more than wrapping them in cotton wool. Hand them the hard thing, stand behind them while they wrestle with it, and watch them grow taller than your shelter ever was. You lift others by the example you set.</p>
+          </div>
+        </div>
+
+        <div class="item">
+          <button class="trigger" aria-expanded="false" aria-controls="r12">
+            <span class="num">12</span>
+            <span class="head">Stop and Notice
+              <span class="teaser">Stop, look, be grateful. The present is life too.</span>
+            </span>
+            <span class="sign" aria-hidden="true"></span>
+          </button>
+          <div class="panel" id="r12">
+            <p>Every other rule asks you to push. This one is the balm for when you are tired or things go wrong: stop, calm down, rest, and come back. Rest is part of how the work gets built.</p>
+            <p>Notice the small, ordinary beauty most people sprint past. Cultivate inner peace. And keep your material needs small, because when you do not need much, hitting your goals becomes easier.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="thanks">Thanks for reading.</p>
+    <p>A living document. A rule changes when I learn something that proves it wrong. Last revised October 2026.</p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  document.querySelectorAll('.trigger').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var open = btn.getAttribute('aria-expanded') === 'true';
+      var panel = document.getElementById(btn.getAttribute('aria-controls'));
+      btn.setAttribute('aria-expanded', String(!open));
+      panel.classList.toggle('open', !open);
+    });
+  });
+})();
+</script>
+</body>
+</html>
