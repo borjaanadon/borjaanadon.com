@@ -156,7 +156,9 @@ h1{
 .subsec{margin:0 0 clamp(44px,6vw,64px)}
 .subsec:last-child{margin-bottom:0}
 .subsec > h2{font-size:clamp(1.2rem,2vw,1.4rem);letter-spacing:-.015em;font-weight:500;line-height:1.3;margin:0}
-.subsec > .lead{color:var(--muted);font-size:15px;margin:.35rem 0 clamp(20px,3vw,28px);max-width:68ch}
+.subsec > .lead{color:var(--muted);font-size:15px;margin:.35rem 0 clamp(20px,3vw,28px)}
+.subsec > h2.solo{margin-bottom:clamp(20px,3vw,28px)}
+.panel-lead{color:var(--muted);font-size:15px;margin:0 0 clamp(20px,3vw,28px)}
 .soon-note{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:0;padding:1rem 0;border-top:1px solid var(--rule-soft);border-bottom:1px solid var(--rule-soft)}
 .rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule-soft)}
 .rows li{
@@ -232,6 +234,7 @@ footer .thanks{font-size:clamp(1.1rem,2.4vw,1.35rem);letter-spacing:-.014em;colo
   <!-- ===== My rules ===== -->
   <section class="tabpanel" id="rules" role="tabpanel" aria-labelledby="tab-rules">
     <div class="content">
+      <p class="panel-lead">These are my rules for life that I (try to) live up to.</p>
       <div class="list">
 
         <div class="item">
@@ -421,8 +424,7 @@ footer .thanks{font-size:clamp(1.1rem,2.4vw,1.35rem);letter-spacing:-.014em;colo
       </div>
 
       <div class="subsec">
-        <h2>Articles I've found interesting</h2>
-        <p class="lead">Grouped by topic.</p>
+        <h2 class="solo">Articles I've found interesting</h2>
 
       <div class="group">
         <h3>Startups &amp; growth</h3>
