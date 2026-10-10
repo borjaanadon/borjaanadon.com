@@ -88,7 +88,8 @@ h1{
 .contact svg{vertical-align:-2px;margin-right:.42em}
 .intro{margin:2.4rem 0 0;max-width:60ch}
 .intro p{margin:0 0 .8rem;font-size:clamp(1.05rem,1.6vw,1.2rem);line-height:1.5;letter-spacing:-.008em}
-.intro p:last-child{margin-bottom:0;color:var(--muted)}
+.intro p:last-child{margin-bottom:0}
+.intro .note{color:var(--muted);margin-top:1.2rem}
 
 .portrait{margin:0}
 .portrait img{width:100%;height:auto;display:block;filter:grayscale(1) contrast(1.03)}
@@ -151,7 +152,12 @@ h1{
 /* ---------- link / row lists (readings, projects, races) ---------- */
 .group{margin:0 0 clamp(30px,4vw,44px)}
 .group:last-child{margin-bottom:0}
-.group h2{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:400;margin:0 0 .4rem}
+.group h3{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:400;margin:0 0 .4rem}
+.subsec{margin:0 0 clamp(44px,6vw,64px)}
+.subsec:last-child{margin-bottom:0}
+.subsec > h2{font-size:clamp(1.2rem,2vw,1.4rem);letter-spacing:-.015em;font-weight:500;line-height:1.3;margin:0}
+.subsec > .lead{color:var(--muted);font-size:15px;margin:.35rem 0 clamp(20px,3vw,28px);max-width:68ch}
+.soon-note{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:0;padding:1rem 0;border-top:1px solid var(--rule-soft);border-bottom:1px solid var(--rule-soft)}
 .rows{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule-soft)}
 .rows li{
   display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.4rem 1.5rem;align-items:baseline;
@@ -206,6 +212,7 @@ footer .thanks{font-size:clamp(1.1rem,2.4vw,1.35rem);letter-spacing:-.014em;colo
       <div class="intro">
         <p>Welcome to my personal page! This is the place to get to know me better: what I believe, what I find interesting, and what I am working on at the moment.</p>
         <p>Big fan of startups, technology, the humanities in all their forms, and endurance sports.</p>
+        <p class="note">Want to talk? Reach me on any of the platforms above.</p>
       </div>
     </div>
     <figure class="portrait">
@@ -216,8 +223,9 @@ footer .thanks{font-size:clamp(1.1rem,2.4vw,1.35rem);letter-spacing:-.014em;colo
 
   <nav class="tabs" role="tablist" aria-label="Sections">
     <button class="tab" role="tab" id="tab-rules" aria-controls="rules" aria-selected="true">My rules</button>
-    <button class="tab" role="tab" id="tab-readings" aria-controls="readings" aria-selected="false" tabindex="-1">My readings</button>
     <button class="tab" role="tab" id="tab-projects" aria-controls="projects" aria-selected="false" tabindex="-1">My projects</button>
+    <button class="tab" role="tab" id="tab-readings" aria-controls="readings" aria-selected="false" tabindex="-1">My readings</button>
+    <button class="tab" role="tab" id="tab-essays" aria-controls="essays" aria-selected="false" tabindex="-1">My essays</button>
     <button class="tab" role="tab" id="tab-races" aria-controls="races" aria-selected="false" tabindex="-1">My races</button>
   </nav>
 
@@ -401,8 +409,23 @@ footer .thanks{font-size:clamp(1.1rem,2.4vw,1.35rem);letter-spacing:-.014em;colo
   <section class="tabpanel" id="readings" role="tabpanel" aria-labelledby="tab-readings" hidden>
     <div class="content">
 
+      <div class="subsec">
+        <h2>Books I'm currently reading</h2>
+        <p class="lead">I usually keep several reading tracks open and switch from one to another depending on what I feel like.</p>
+        <ul class="rows">
+          <li><a class="title" href="https://www.amazon.es/dp/0007461216" target="_blank" rel="noopener noreferrer">Mere Christianity</a><span class="meta">C. S. Lewis &nbsp;·&nbsp; Humanities</span></li>
+          <li><a class="title" href="https://www.amazon.es/dp/1804950920" target="_blank" rel="noopener noreferrer">The Sweaty Startup: How to Get Rich Doing Simple Things</a><span class="meta">Nick Huber &nbsp;·&nbsp; Business</span></li>
+          <li><a class="title" href="https://www.amazon.es/dp/8496467511" target="_blank" rel="noopener noreferrer">España, tres milenios de historia</a><span class="meta">Antonio Domínguez Ortiz &nbsp;·&nbsp; History of Spain</span></li>
+          <li><a class="title" href="https://www.amazon.es/dp/0195374614" target="_blank" rel="noopener noreferrer">A Guide to the Good Life</a><span class="meta">William B. Irvine &nbsp;·&nbsp; Mindset</span></li>
+        </ul>
+      </div>
+
+      <div class="subsec">
+        <h2>Articles I've found interesting</h2>
+        <p class="lead">Grouped by topic.</p>
+
       <div class="group">
-        <h2>Startups &amp; growth</h2>
+        <h3>Startups &amp; growth</h3>
         <ul class="rows">
           <li><a class="title" href="https://www.paulgraham.com/ds.html" target="_blank" rel="noopener noreferrer">Do Things that Don't Scale</a><span class="meta">Paul Graham</span></li>
           <li><a class="title" href="https://www.nfx.com/post/find-the-fast-moving-water" target="_blank" rel="noopener noreferrer">Find the Fast Moving Water</a><span class="meta">NFX</span></li>
@@ -413,7 +436,7 @@ footer .thanks{font-size:clamp(1.1rem,2.4vw,1.35rem);letter-spacing:-.014em;colo
       </div>
 
       <div class="group">
-        <h2>Talent &amp; ambition</h2>
+        <h3>Talent &amp; ambition</h3>
         <ul class="rows">
           <li><a class="title" href="https://paulgraham.com/greatwork.html" target="_blank" rel="noopener noreferrer">How to Do Great Work</a><span class="meta">Paul Graham</span></li>
           <li><a class="title" href="https://www.highagency.com/" target="_blank" rel="noopener noreferrer">High Agency in 30 Minutes</a><span class="meta">George Mack</span></li>
@@ -422,13 +445,21 @@ footer .thanks{font-size:clamp(1.1rem,2.4vw,1.35rem);letter-spacing:-.014em;colo
       </div>
 
       <div class="group">
-        <h2>Society &amp; humanities</h2>
+        <h3>Society &amp; humanities</h3>
         <ul class="rows">
           <li><a class="title" href="https://www.state.gov/releases/office-of-the-spokesman/2026/10/secretary-of-state-marco-rubio-remarks" target="_blank" rel="noopener noreferrer">Marco Rubio's speech at the Pnyx, Athens</a><span class="meta">U.S. Department of State</span></li>
           <li><a class="title" href="https://www.linkedin.com/pulse/from-townhall-living-room-evolution-social-media-opportunity-we-pusnf/" target="_blank" rel="noopener noreferrer">From Townhall to Living Room: the evolution of social media</a><span class="meta">Talent First by Nova</span></li>
         </ul>
       </div>
+      </div>
 
+    </div>
+  </section>
+
+  <!-- ===== My essays ===== -->
+  <section class="tabpanel" id="essays" role="tabpanel" aria-labelledby="tab-essays" hidden>
+    <div class="content">
+      <p class="soon-note">Coming soon</p>
     </div>
   </section>
 
