@@ -1,0 +1,422 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My library · Borja Anadón</title>
+<meta name="description" content="Borja Anadón's library: the books I've read, the ones I'm reading and the ones waiting on the shelf, with my notes on each.">
+<meta property="og:title" content="My library · Borja Anadón">
+<meta property="og:description" content="The books I've read, the ones I'm reading and the ones waiting on the shelf.">
+<meta property="og:url" content="https://borjaanadon.com/mylibrary/">
+<link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
+<link rel="icon" href="../favicon-64.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="../favicon-64.png">
+<link rel="preload" href="../archivo-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+@font-face{
+  font-family:'Archivo';
+  src:url(../archivo-latin.woff2) format('woff2');
+  font-weight:400 700; font-style:normal; font-display:block;
+}
+
+:root{
+  --paper:#F5F5F3;
+  --panel:#FFFFFF;
+  --ink:#0E0E0D;
+  --muted:#66665F;
+  --faint:#9C9C95;
+  --rule:#DCDCD7;
+  --rule-soft:#E9E9E5;
+  --spine:#E4E4DF;
+  --sans:'Archivo',-apple-system,'Segoe UI','Helvetica Neue',Arial,sans-serif;
+  --mono:ui-monospace,'SF Mono','Cascadia Mono','Roboto Mono',Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#0B0B0A;
+    --panel:#131312;
+    --ink:#ECECE8;
+    --muted:#95958D;
+    --faint:#67675F;
+    --rule:#262623;
+    --rule-soft:#1C1C1A;
+    --spine:#1A1A18;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#0B0B0A;
+  --panel:#131312;
+  --ink:#ECECE8;
+  --muted:#95958D;
+  --faint:#67675F;
+  --rule:#262623;
+  --rule-soft:#1C1C1A;
+  --spine:#1A1A18;
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-size:16px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  font-synthesis-weight:none;
+}
+.wrap{max-width:1320px;margin:0 auto;padding:0 clamp(16px,4vw,48px)}
+.mono{font-family:var(--mono)}
+
+/* ---------- header ---------- */
+.back{display:inline-block;margin-top:clamp(24px,4vw,40px);font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+.back:hover{color:var(--ink)}
+.hero{padding:clamp(36px,6vw,72px) 0 clamp(28px,4vw,44px)}
+h1{
+  font-size:clamp(2.7rem,8vw,5rem);
+  line-height:.94;
+  letter-spacing:-.035em;
+  font-weight:600;
+  margin:0 0 1.4rem;
+}
+.intro{max-width:62ch}
+.intro p{margin:0 0 .8rem;font-size:clamp(1.05rem,1.6vw,1.2rem);line-height:1.5;letter-spacing:-.008em}
+.intro .note{color:var(--muted);font-size:15px;line-height:1.55;letter-spacing:0}
+
+/* ---------- stats ---------- */
+.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:0 0 clamp(36px,5vw,56px)}
+.stat{padding:1.2rem 1rem 1.1rem 0}
+.stat + .stat{padding-left:1.2rem;border-left:1px solid var(--rule-soft)}
+.stat .n{font-size:clamp(1.6rem,3.4vw,2.3rem);font-weight:500;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums}
+.stat .l{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);margin-top:.55rem}
+@media (max-width:640px){
+  .stats{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stat:nth-child(3){padding-left:0;border-left:0}
+  .stat:nth-child(n+3){border-top:1px solid var(--rule-soft)}
+}
+
+/* ---------- reading now ---------- */
+.section-title{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:400;margin:0 0 1rem}
+.now{margin:0 0 clamp(44px,6vw,64px)}
+.now-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:1rem}
+.now-card{display:grid;grid-template-columns:72px minmax(0,1fr);gap:1rem;align-items:center;background:var(--panel);border:1px solid var(--rule-soft);padding:.8rem;text-align:left;font:inherit;color:inherit;cursor:pointer;transition:border-color .18s}
+.now-card:hover{border-color:var(--rule)}
+.now-card .t{font-weight:500;letter-spacing:-.01em;line-height:1.3;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+.now-card .a{font-size:14px;color:var(--muted);margin-top:.2rem}
+.now-card .p{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin-top:.45rem}
+
+/* ---------- controls ---------- */
+.controls{background:var(--paper);border-bottom:1px solid var(--rule);padding:.9rem 0 .8rem;margin-bottom:1.6rem}
+@media (min-width:760px){.controls{position:sticky;top:0;z-index:5}}
+.bar{display:flex;flex-wrap:wrap;gap:.8rem 1.6rem;align-items:center;justify-content:space-between}
+.status{display:flex;gap:clamp(14px,2.6vw,32px);overflow-x:auto;scrollbar-width:none}
+.status::-webkit-scrollbar{display:none}
+.status button{font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);background:none;border:0;padding:.35rem 0;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:color .18s,border-color .18s}
+.status button:hover{color:var(--ink)}
+.status button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--ink)}
+.status .c{color:var(--faint);margin-left:.35em}
+.tools{display:flex;gap:.6rem;flex:1 1 300px;justify-content:flex-end;min-width:0}
+.tools input,.tools select{
+  font:inherit;font-size:14px;color:var(--ink);background:var(--panel);
+  border:1px solid var(--rule);border-radius:0;padding:.5rem .7rem;min-width:0;
+}
+.tools input{flex:1 1 220px;max-width:340px}
+.tools input::placeholder{color:var(--faint)}
+.tools select{font-family:var(--mono);font-size:12px;letter-spacing:.04em;cursor:pointer}
+.chips{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem}
+.chips:empty{display:none}
+.chip{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--muted);background:none;border:1px solid var(--rule);padding:.32rem .6rem;cursor:pointer;white-space:nowrap;transition:color .18s,border-color .18s,background .18s}
+.chip:hover{color:var(--ink);border-color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--paper)}
+.chip .c{opacity:.6;margin-left:.4em}
+.chips.sub .chip{border-style:dashed}
+.chips.sub .chip[aria-pressed="true"]{border-style:solid}
+@media (max-width:640px){
+  .tools{justify-content:stretch}
+  .tools input{max-width:none}
+}
+
+/* ---------- grid ---------- */
+.count{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--faint);margin:0 0 1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(138px,1fr));gap:2rem 1.3rem;padding-bottom:clamp(48px,7vw,86px)}
+@media (max-width:560px){.grid{grid-template-columns:repeat(auto-fill,minmax(102px,1fr));gap:1.5rem .9rem}}
+.book{background:none;border:0;padding:0;font:inherit;color:inherit;text-align:left;cursor:pointer;display:block;width:100%}
+.cover{position:relative;aspect-ratio:2/3;background:var(--spine);overflow:hidden;box-shadow:0 1px 0 var(--rule),0 6px 16px -10px rgba(0,0,0,.35);transition:transform .2s ease,box-shadow .2s ease}
+.book:hover .cover{transform:translateY(-3px);box-shadow:0 1px 0 var(--rule),0 12px 22px -12px rgba(0,0,0,.45)}
+.cover img{width:100%;height:100%;object-fit:cover;display:block}
+.cover.blank{display:flex;flex-direction:column;justify-content:space-between;padding:.8rem .7rem;border:1px solid var(--rule)}
+.cover.blank .bt{font-size:14px;font-weight:600;line-height:1.2;letter-spacing:-.01em;display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+.cover.blank .ba{font-family:var(--mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.badge{position:absolute;left:6px;top:6px;font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:var(--paper);padding:.18rem .4rem}
+.book .t{font-size:14px;font-weight:500;line-height:1.3;letter-spacing:-.006em;margin-top:.7rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.book .a{font-size:13px;color:var(--muted);margin-top:.15rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.book .s{font-size:12px;letter-spacing:.1em;margin-top:.2rem}
+.empty{grid-column:1/-1;color:var(--muted);padding:2rem 0}
+.more{grid-column:1/-1;justify-self:center;font-family:var(--mono);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:none;border:1px solid var(--ink);padding:.7rem 1.3rem;cursor:pointer}
+.more:hover{background:var(--ink);color:var(--paper)}
+
+/* ---------- book dialog ---------- */
+dialog{
+  width:min(780px,calc(100vw - 32px));max-height:calc(100vh - 48px);
+  border:1px solid var(--rule);padding:0;background:var(--paper);color:var(--ink);
+}
+dialog::backdrop{background:rgba(10,10,9,.55)}
+.dlg{display:grid;grid-template-columns:200px minmax(0,1fr);gap:clamp(20px,4vw,40px);padding:clamp(22px,4vw,40px)}
+.dlg .cover{box-shadow:0 10px 26px -14px rgba(0,0,0,.5)}
+.close{position:absolute;right:10px;top:8px;background:none;border:0;font-size:26px;line-height:1;color:var(--muted);cursor:pointer;padding:.3rem .5rem}
+.close:hover{color:var(--ink)}
+.dlg .path{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);margin:0 0 .8rem}
+.dlg h2{font-size:clamp(1.5rem,3vw,2rem);line-height:1.1;letter-spacing:-.025em;font-weight:600;margin:0 0 .4rem;padding-right:1.5rem}
+.dlg .by{color:var(--muted);margin:0 0 1.3rem}
+.facts{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.35rem 1.4rem;margin:0 0 1.5rem;font-size:14.5px}
+.facts dt{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);padding-top:.2em}
+.facts dd{margin:0}
+.dlg h3{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:400;margin:1.5rem 0 .5rem;padding-top:1.1rem;border-top:1px solid var(--rule-soft)}
+.dlg .op{margin:0;white-space:pre-line}
+.dlg ul{margin:0;padding-left:1.1rem}
+.dlg li{margin:0 0 .4rem}
+.dlg .nonotes{color:var(--muted);margin:1.5rem 0 0;padding-top:1.1rem;border-top:1px solid var(--rule-soft)}
+.dlg .buy{display:inline-block;margin-top:1.6rem;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);font-family:var(--mono);font-size:13px}
+.dlg .buy:hover{border-bottom-color:var(--ink)}
+@media (max-width:620px){
+  .dlg{grid-template-columns:1fr}
+  .dlg > .cover{width:130px}
+}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--rule);padding:clamp(38px,6vw,62px) 0 clamp(46px,7vw,72px);color:var(--muted);font-size:15px}
+footer p{margin:0 0 .6rem;max-width:62ch}
+footer p:last-child{margin-bottom:0}
+footer .thanks{font-size:clamp(1.1rem,2.4vw,1.35rem);letter-spacing:-.014em;color:var(--ink)}
+footer a{color:inherit}
+
+:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms !important;transition-duration:.001ms !important}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <a class="back" href="../#readings">&larr; Borja Anadón</a>
+
+  <header class="hero">
+    <h1>My library</h1>
+    <div class="intro">
+      <p>A good personal library holds the books you want to read, not only the ones you have already read. So this is all of it: what I've read, what I'm reading and what is still waiting on the shelf.</p>
+      <p class="note">Each book sits in one of the four pillars I build my life on: knowledge, spirituality, health and love. Open any book to see what I thought of it and what I took away.</p>
+    </div>
+  </header>
+
+  <section class="stats" aria-label="Library in numbers">
+    <div class="stat"><div class="n" id="st-all">–</div><div class="l">On the shelf</div></div>
+    <div class="stat"><div class="n" id="st-read">–</div><div class="l">Read</div></div>
+    <div class="stat"><div class="n" id="st-reading">–</div><div class="l">Reading now</div></div>
+    <div class="stat"><div class="n" id="st-toread">–</div><div class="l">Waiting</div></div>
+  </section>
+
+  <section class="now" id="now" hidden>
+    <h2 class="section-title">Reading now</h2>
+    <div class="now-row" id="now-row"></div>
+  </section>
+
+  <div class="controls">
+    <div class="bar">
+      <div class="status" id="status" role="group" aria-label="Reading status"></div>
+      <div class="tools">
+        <input id="q" type="search" placeholder="Search by title or author" aria-label="Search by title or author">
+        <select id="sort" aria-label="Sort">
+          <option value="recent">Recent</option>
+          <option value="rating">Top rated</option>
+          <option value="title">Title</option>
+          <option value="author">Author</option>
+        </select>
+      </div>
+    </div>
+    <div class="chips" id="pillars" role="group" aria-label="Pillar"></div>
+    <div class="chips sub" id="blocks" role="group" aria-label="Block"></div>
+    <div class="chips sub" id="cats" role="group" aria-label="Category"></div>
+  </div>
+
+  <p class="count" id="count"></p>
+  <div class="grid" id="grid" aria-live="polite"></div>
+
+  <footer>
+    <p class="thanks">Thanks for reading.</p>
+    <p>A living library, updated as I read. <span id="updated"></span></p>
+  </footer>
+</div>
+
+<dialog id="dlg" aria-labelledby="dlg-title">
+  <button class="close" id="dlg-close" aria-label="Close">&times;</button>
+  <div class="dlg" id="dlg-body"></div>
+</dialog>
+
+<script>
+(function(){
+  var PAGE = 120;
+  var STATUS = [['all','All'],['read','Read'],['reading','Reading'],['toread','To read']];
+  var LABEL = {read:'Read', reading:'Reading', toread:'To read'};
+  var MONTHS = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var books = [], byId = {};
+  var state = {status:'all', pillar:'', block:'', cat:'', q:'', sort:'recent', shown:PAGE};
+
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  function norm(s){ return s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase(); }
+  function stars(n){ return n ? '★★★★★'.slice(0,n) + '<span style="color:var(--rule)">' + '★★★★★'.slice(n) + '</span>' : ''; }
+  function $(id){ return document.getElementById(id); }
+
+  function coverHTML(b, extra){
+    extra = extra || '';
+    if(b.cover) return '<div class="cover"><img src="' + esc(b.cover) + '" alt="" loading="lazy" decoding="async">' + extra + '</div>';
+    return '<div class="cover blank"><span class="bt">' + esc(b.title) + '</span><span class="ba">' + esc(b.author) + '</span>' + extra + '</div>';
+  }
+
+  /* ---------- filtering ---------- */
+  function matches(b, skip){
+    if(skip !== 'status' && state.status !== 'all' && b.status !== state.status) return false;
+    if(skip !== 'pillar' && state.pillar && b.pillar !== state.pillar) return false;
+    if(skip !== 'pillar' && skip !== 'block' && state.block && b.block !== state.block) return false;
+    if(skip !== 'pillar' && skip !== 'block' && skip !== 'cat' && state.cat && b.category !== state.cat) return false;
+    if(state.q && b._q.indexOf(state.q) < 0) return false;
+    return true;
+  }
+  function counts(list, key){
+    var c = {};
+    list.forEach(function(b){ if(b[key]) c[b[key]] = (c[b[key]] || 0) + 1; });
+    return Object.keys(c).sort(function(a,b){ return c[b] - c[a] || a.localeCompare(b); }).map(function(k){ return [k, c[k]]; });
+  }
+  var ORDER = {reading:0, read:1, toread:2};
+  function sorted(list){
+    var s = state.sort, l = list.slice();
+    l.sort(function(a,b){
+      if(s === 'title') return a.title.localeCompare(b.title);
+      if(s === 'author') return a.author.localeCompare(b.author) || a.title.localeCompare(b.title);
+      if(s === 'rating') return b.rating - a.rating || ORDER[a.status] - ORDER[b.status] || a._i - b._i;
+      return ORDER[a.status] - ORDER[b.status] || (b.year || '').localeCompare(a.year || '') || a._i - b._i;
+    });
+    return l;
+  }
+
+  /* ---------- rendering ---------- */
+  function chipRow(el, items, active, key, allLabel){
+    if(!items) { el.innerHTML = ''; return; }
+    var total = items.reduce(function(s,i){ return s + i[1]; }, 0);
+    el.innerHTML = '<button class="chip" data-v="" aria-pressed="' + (!active) + '">' + allLabel + '<span class="c">' + total + '</span></button>' +
+      items.map(function(i){
+        return '<button class="chip" data-v="' + esc(i[0]) + '" aria-pressed="' + (active === i[0]) + '">' + esc(i[0]) + '<span class="c">' + i[1] + '</span></button>';
+      }).join('');
+    el.onclick = function(e){
+      var btn = e.target.closest('.chip'); if(!btn) return;
+      state[key] = btn.dataset.v;
+      if(key === 'pillar'){ state.block = ''; state.cat = ''; }
+      if(key === 'block'){ state.cat = ''; }
+      state.shown = PAGE; render();
+    };
+  }
+
+  function render(){
+    // status buttons with counts that respect the other filters
+    var base = books.filter(function(b){ return matches(b, 'status'); });
+    $('status').innerHTML = STATUS.map(function(s){
+      var n = s[0] === 'all' ? base.length : base.filter(function(b){ return b.status === s[0]; }).length;
+      return '<button data-v="' + s[0] + '" aria-pressed="' + (state.status === s[0]) + '">' + s[1] + '<span class="c">' + n + '</span></button>';
+    }).join('');
+
+    chipRow($('pillars'), counts(books.filter(function(b){ return matches(b, 'pillar'); }), 'pillar'), state.pillar, 'pillar', 'All pillars');
+    chipRow($('blocks'), state.pillar ? counts(books.filter(function(b){ return matches(b, 'block'); }), 'block') : null, state.block, 'block', 'All of ' + esc(state.pillar));
+    chipRow($('cats'), state.block ? counts(books.filter(function(b){ return matches(b, 'cat'); }), 'category') : null, state.cat, 'cat', 'All of ' + esc(state.block));
+
+    var list = sorted(books.filter(function(b){ return matches(b); }));
+    $('count').textContent = list.length + (list.length === 1 ? ' book' : ' books');
+    if(!list.length){ $('grid').innerHTML = '<p class="empty">No books match. Try another filter.</p>'; return; }
+    $('grid').innerHTML = list.slice(0, state.shown).map(function(b){
+      var badge = b.status === 'reading' ? '<span class="badge">Reading</span>' : b.status === 'read' ? '<span class="badge">Read</span>' : '';
+      return '<button class="book" data-id="' + esc(b.id) + '">' + coverHTML(b, badge) +
+        '<div class="t">' + esc(b.title) + '</div><div class="a">' + esc(b.author) + '</div>' +
+        (b.rating ? '<div class="s">' + stars(b.rating) + '</div>' : '') + '</button>';
+    }).join('') + (list.length > state.shown ? '<button class="more" id="more">Show ' + Math.min(PAGE, list.length - state.shown) + ' more of ' + (list.length - state.shown) + '</button>' : '');
+  }
+
+  /* ---------- dialog ---------- */
+  function open(id, push){
+    var b = byId[id]; if(!b) return;
+    var facts = [['Status', LABEL[b.status]]];
+    if(b.year) facts.push(['Read in', esc(b.year)]);
+    if(b.rating) facts.push(['Rating', stars(b.rating)]);
+    if(b.plan) facts.push(['Reading plan', esc(b.plan)]);
+    var notes = '';
+    if(b.opinion) notes += '<h3>My take</h3><p class="op">' + esc(b.opinion) + '</p>';
+    if(b.learnings.length) notes += '<h3>What I took away</h3><ul>' + b.learnings.map(function(l){ return '<li>' + esc(l) + '</li>'; }).join('') + '</ul>';
+    if(!notes) notes = '<p class="nonotes">' + (b.status === 'toread' ? 'On my list. Notes will come once I have read it.' : b.status === 'reading' ? 'Reading it now. Notes will come when I finish.' : 'No notes yet.') + '</p>';
+    $('dlg-body').innerHTML = coverHTML(b) +
+      '<div><p class="path">' + [b.pillar, b.block, b.category].filter(Boolean).map(esc).join(' &rsaquo; ') + '</p>' +
+      '<h2 id="dlg-title">' + esc(b.title) + '</h2><p class="by">' + esc(b.author) + '</p>' +
+      '<dl class="facts">' + facts.map(function(f){ return '<dt>' + f[0] + '</dt><dd>' + f[1] + '</dd>'; }).join('') + '</dl>' +
+      notes +
+      (b.url ? '<a class="buy" href="' + esc(b.url) + '" target="_blank" rel="noopener noreferrer">' + (b.url.indexOf('amazon.') > -1 ? 'View on Amazon' : 'View book') + ' &#8599;</a>' : '') +
+      '</div>';
+    if(!$('dlg').open) $('dlg').showModal();
+    if(push !== false) history.replaceState(null, '', '#book=' + b.id);
+  }
+  function close(){ $('dlg').close(); }
+  $('dlg').addEventListener('close', function(){ if(location.hash.indexOf('#book=') === 0) history.replaceState(null, '', location.pathname); });
+  $('dlg-close').addEventListener('click', close);
+  $('dlg').addEventListener('click', function(e){ if(e.target === $('dlg')) close(); });
+
+  /* ---------- events ---------- */
+  $('status').addEventListener('click', function(e){
+    var btn = e.target.closest('button'); if(!btn) return;
+    state.status = btn.dataset.v; state.shown = PAGE; render();
+  });
+  $('grid').addEventListener('click', function(e){
+    if(e.target.closest('#more')){ state.shown += PAGE; render(); return; }
+    var btn = e.target.closest('.book'); if(btn) open(btn.dataset.id);
+  });
+  $('now-row').addEventListener('click', function(e){
+    var btn = e.target.closest('.now-card'); if(btn) open(btn.dataset.id);
+  });
+  var t;
+  $('q').addEventListener('input', function(e){
+    clearTimeout(t);
+    t = setTimeout(function(){ state.q = norm(e.target.value.trim()); state.shown = PAGE; render(); }, 120);
+  });
+  $('sort').addEventListener('change', function(e){ state.sort = e.target.value; render(); });
+  function fromHash(){
+    var m = location.hash.match(/^#book=(.+)$/);
+    if(m) open(decodeURIComponent(m[1]), false);
+  }
+  window.addEventListener('hashchange', fromHash);
+
+  /* ---------- load ---------- */
+  fetch('books.json').then(function(r){ return r.json(); }).then(function(data){
+    books = data.books;
+    books.forEach(function(b, i){ b._i = i; b._q = norm(b.title + ' ' + b.author); byId[b.id] = b; });
+    var n = function(s){ return books.filter(function(b){ return b.status === s; }).length; };
+    $('st-all').textContent = books.length;
+    $('st-read').textContent = n('read');
+    $('st-reading').textContent = n('reading');
+    $('st-toread').textContent = n('toread');
+    var d = new Date(data.updated + 'T00:00:00');
+    $('updated').textContent = 'Last updated ' + MONTHS[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear() + '.';
+
+    var now = books.filter(function(b){ return b.status === 'reading'; });
+    if(now.length){
+      $('now').hidden = false;
+      $('now-row').innerHTML = now.map(function(b){
+        return '<button class="now-card" data-id="' + esc(b.id) + '">' + coverHTML(b) +
+          '<div><div class="t">' + esc(b.title) + '</div><div class="a">' + esc(b.author) + '</div>' +
+          (b.plan ? '<div class="p">' + esc(b.plan) + '</div>' : '') + '</div></button>';
+      }).join('');
+    }
+    state.q = norm($('q').value.trim()); // the browser may restore the field on back navigation
+    render();
+    fromHash();
+  }).catch(function(){
+    $('grid').innerHTML = '<p class="empty">The library could not be loaded. Please try again later.</p>';
+  });
+})();
+</script>
+</body>
+</html>
