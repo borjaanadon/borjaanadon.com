@@ -181,6 +181,26 @@ h1{
   .rows .meta{text-align:left}
 }
 
+/* essays */
+.essay-links{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem}
+.essay-links .more-link{margin-top:0}
+.essay{max-width:68ch}
+.essay[hidden]{display:none}
+.essay .back{margin:0 0 clamp(24px,3.5vw,36px)}
+.essay h2{font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:-.02em;font-weight:600;line-height:1.15;margin:0 0 .6rem;text-wrap:balance}
+.essay .essay-meta{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--muted);margin:0 0 clamp(28px,4vw,40px)}
+.essay .essay-meta a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);transition:border-color .18s}
+.essay .essay-meta a:hover{border-bottom-color:var(--ink)}
+.essay h3{font-size:1.15rem;letter-spacing:-.012em;font-weight:600;line-height:1.35;margin:2.2rem 0 .7rem}
+.essay p{margin:0 0 1.05rem;font-size:1.04rem;line-height:1.7}
+.essay ol{margin:0 0 1.05rem;padding-left:1.4rem}
+.essay ol li{margin:0 0 .5rem;font-size:1.04rem;line-height:1.7}
+.essay .refs{border-top:1px solid var(--rule-soft);margin-top:2.6rem;padding-top:.4rem}
+.essay .refs h3{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:400}
+.essay .refs li{font-size:14px;line-height:1.55;color:var(--muted)}
+.essay .refs a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--rule);transition:border-color .18s}
+.essay .refs a:hover{border-bottom-color:var(--ink)}
+
 /* races table */
 .races{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
 .races th{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--faint);font-weight:400;text-align:left;padding:0 1rem .5rem 0;border-bottom:1px solid var(--rule-soft)}
@@ -473,9 +493,156 @@ footer .thanks{font-size:clamp(1.1rem,2.4vw,1.35rem);letter-spacing:-.014em;colo
 
   <!-- ===== My essays ===== -->
   <section class="tabpanel" id="essays" role="tabpanel" aria-labelledby="tab-essays" hidden>
-    <div class="content">
-      <p class="soon-note">Coming soon</p>
+    <div class="content" id="essay-list">
+      <div class="subsec">
+        <h2>On neuroplasticity, the value of doing hard things and the future of work with AI</h2>
+        <p class="lead">Why the brain changes most when something is hard for it, why hard things are worth doing for their own sake, and how AI can either dull that process or become the best coach we have ever had.</p>
+        <div class="essay-links">
+          <a class="more-link" href="#essays/on-neuroplasticity-the-value-of-doing-hard-things-and-the-future-of-work-with-ai">Read in English →</a>
+          <a class="more-link" href="#essays/la-neuroplasticidad-del-cerebro-el-valor-de-hacer-cosas-dificiles-y-el-futuro-del-trabajo-con-la-ia" hreflang="es">Leer en español →</a>
+        </div>
+      </div>
     </div>
+
+    <article class="essay" data-slug="on-neuroplasticity-the-value-of-doing-hard-things-and-the-future-of-work-with-ai" lang="en" hidden>
+      <p class="back"><a class="more-link" href="#essays">← All essays</a></p>
+      <h2>On neuroplasticity, the value of doing hard things and the future of work with AI</h2>
+      <p class="essay-meta">October 2026 &nbsp;·&nbsp; <a href="#essays/la-neuroplasticidad-del-cerebro-el-valor-de-hacer-cosas-dificiles-y-el-futuro-del-trabajo-con-la-ia" hreflang="es">Leer en español</a></p>
+
+      <p>The adult brain changes and evolves throughout life, and it does so above all when something is hard for it. That idea, which neuroscience has been building up for decades, collides head-on with the false promise of artificial intelligence: sparing us the effort.</p>
+      <p>If what makes us smarter is exactly what AI wants to take away from us, are we looking at the tool that will dumb us down or at the best mental coach we have ever had? The answer depends on a decision almost nobody thinks about when they send a prompt.</p>
+
+      <h3>Is AI dumbing us down?</h3>
+      <p>In June 2025, a team at the MIT Media Lab published an experiment that went viral. They had 54 people write essays, split into three groups: one with ChatGPT, one with a search engine and one using nothing but their own heads. While they wrote, their brain activity was measured with an electroencephalogram. The ChatGPT group showed the lowest brain connectivity of the three, and its participants found it harder to remember what they had just written. The authors called it "cognitive debt".</p>
+      <p>The study, despite its small sample and the lack of peer review, raises a question many of us ask ourselves without saying it out loud: if a machine can do for us what is hard for us, what happens to a brain that stops making an effort? Is AI bound to make us dumber?</p>
+
+      <h3>The brain changes through what is hard for it</h3>
+      <p>To answer, we have to start with how a brain changes. Neuroplasticity is the nervous system's ability to modify its structure and function throughout life in response to experience, learning or stimuli from the environment. It does not switch off when childhood ends. It lasts a lifetime.</p>
+      <p>What is interesting is which kind of demand works. In 2014, psychologist Denise Park and her team at the University of Texas recruited 221 people aged 60 to 90 and assigned them an activity of about fifteen hours a week for three months. Some learned something new and demanding, such as digital photography or quilting. Others did pleasant but familiar activities: social gatherings or quiet hobbies at home.</p>
+      <p>In the end, episodic memory improved only in those who had learned the hard thing. Being active was not enough. It had to be hard.</p>
+
+      <h3>Why easy is deceptive</h3>
+      <p>The psychology of learning reached the same conclusion by another route. Robert Bjork, of the University of California, Los Angeles, has been studying since the nineties what he calls "desirable difficulties": conditions that make learning slower and more uncomfortable in the moment, and that, precisely because of that, leave learning that lasts longer.</p>
+      <p>Bjork separates two things we tend to confuse: performance, which is what you can do now, and learning, which is what you keep and can use later. Henry Roediger and Jeffrey Karpicke measured it in 2006 with university students. Those who reread a text performed better after five minutes, but a week later they remembered considerably less than those who had forced themselves to recall it. And the most revealing part: those who reread felt more confident about what they knew.</p>
+      <p>Ease has every appearance of learning but leaves very little behind.</p>
+
+      <h3>Hard things are also worth it in themselves</h3>
+      <p>So far, hard things as a means to train the brain. But there is a second reason to do hard things, a less utilitarian one.</p>
+      <p>In 2018, Michael Inzlicht, Amitai Shenhav and Christopher Olivola reviewed the evidence on what they named the "effort paradox": we avoid effort whenever we can and, at the same time, we value more highly what has cost us effort. A piece of furniture we assembled with our own hands seems better to us than one bought ready-made. The state of flow, that moment of total concentration in which you lose track of time, only appears in the face of challenging tasks. Effort is what gives the reward its value, and hard things make sense precisely because they are hard.</p>
+      <p>Neuroscience is beginning to locate that tenacity. Alexandra Touroutoglou and Lisa Feldman Barrett describe the anterior mid-cingulate cortex as a hub that calculates whether an effort is worth it and sustains persistence toward a goal. In a 2016 study, their group found that this area keeps a youthful thickness in so-called superagers, older people whose memory is comparable to that of much younger adults. Whether doing hard things helps preserve it is still a hypothesis, but it points in the same direction.</p>
+
+      <h3>The same AI can dumb us down or make us better</h3>
+      <p>With this, the question about AI changes shape. What decides whether it makes us atrophy is where we put the difficulty.</p>
+      <p>Two studies show this well. In 2023, researchers from Harvard and Boston Consulting Group gave GPT-4 to 758 consultants. On the tasks AI handled well, they completed 12% more work, 25% faster and with higher quality. On a task designed to fall outside what the model could solve well, those using AI got it right less often than those working without it: they trusted the machine and stopped thinking. The authors called it AI's "jagged frontier".</p>
+      <p>In 2025, Gregory Kestin and Kelly Miller compared, at Harvard, an AI tutor with an in-person active learning class in a physics course with 194 students. The tutor was designed following good teaching practice: it guided students step by step and did not hand out the solution. The students learned more in less time and said they felt more motivated. The same technology produces opposite effects depending on whether it replaces effort or directs it.</p>
+
+      <h3>The best coach we have ever had</h3>
+      <p>Seen this way, AI could be the best coach we have ever had. It is always available, infinitely patient, and able to raise the level of the challenge just when the previous one stops being hard.</p>
+      <p>Used well, it places each person at the edge of what they know, which is exactly where the brain changes. Used badly, it removes the part that transforms us and leaves us with the feeling of having learned, just like the students who reread.</p>
+      <p>The danger lies in that feeling of fluency, which is comfortable, looks like progress and builds nothing.</p>
+
+      <h3>The objection: isn't this just nostalgia?</h3>
+      <p>The most serious objection is that all this is nostalgia in a lab coat. Every generation has feared that its technology would dumb us down, and the calculator and the word processor freed us for more interesting problems.</p>
+      <p>If a machine does something better than I do, insisting on doing it by hand looks more like vanity than virtue. Besides, the effort paradox has a dark side: we also overvalue things just because they cost us, even when they are worse.</p>
+      <p>Difficulty alone does not give meaning; it has to point at something worthwhile. But the key lies in the adjective Bjork used: desirable.</p>
+      <p>Not every difficulty trains you. Doing long division by hand builds nothing we need. Building an argument, spotting the error in an analysis or deciding what matters does.</p>
+      <p>Delegating the mechanical sets us free. Delegating judgment leaves us without the muscle we need to know whether the machine is right, which is exactly what happened to the consultants outside the frontier.</p>
+
+      <h3>How to use AI to train your brain</h3>
+      <p>So, does a machine that saves us effort make us dumber? Only if we let it save us the wrong effort.</p>
+      <p>The brain adapts to what we ask of it, and AI widens the menu of what we can ask like never before. Three decisions separate one use from the other:</p>
+      <ol>
+        <li>Think first and ask later, so the machine improves an attempt of your own instead of replacing it.</li>
+        <li>Ask it for questions, corrections and challenges before answers.</li>
+        <li>And measure progress against who we were yesterday, because comparing ourselves with what the machine produces in ten seconds teaches nothing.</li>
+      </ol>
+      <p>Hard things are still the only way to change a brain. What is new is that, for the first time, we have a tool that can always give us just the right difficulty.</p>
+
+      <div class="refs">
+        <h3>References</h3>
+        <ol>
+          <li>Kosmyna, N. et al. (2025). Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task. arXiv:2506.08872 (preprint, not peer reviewed). <a href="https://arxiv.org/abs/2506.08872" target="_blank" rel="noopener noreferrer">Link</a></li>
+          <li>Park, D. C. et al. (2014). The Impact of Sustained Engagement on Cognitive Function in Older Adults: The Synapse Project. <i>Psychological Science</i>, 25(1), 103-112. <a href="https://journals.sagepub.com/doi/10.1177/0956797613499592" target="_blank" rel="noopener noreferrer">Link</a></li>
+          <li>Bjork, E. L. and Bjork, R. A. (2011). Making Things Hard on Yourself, But in a Good Way: Creating Desirable Difficulties to Enhance Learning. In <i>Psychology and the Real World</i> (pp. 56-64). Worth Publishers.</li>
+          <li>Roediger, H. L. and Karpicke, J. D. (2006). Test-Enhanced Learning: Taking Memory Tests Improves Long-Term Retention. <i>Psychological Science</i>, 17(3), 249-255. <a href="https://psychology.ecu.edu/wp-content/pv-uploads/sites/216/2019/03/Roediger-Karpicke-2006.pdf" target="_blank" rel="noopener noreferrer">Link</a></li>
+          <li>Inzlicht, M., Shenhav, A. and Olivola, C. Y. (2018). The Effort Paradox: Effort Is Both Costly and Valued. <i>Trends in Cognitive Sciences</i>, 22(4), 337-349. <a href="https://pmc.ncbi.nlm.nih.gov/articles/6172040/" target="_blank" rel="noopener noreferrer">Link</a></li>
+          <li>Touroutoglou, A., Andreano, J., Dickerson, B. C. and Barrett, L. F. (2020). The Tenacious Brain: How the Anterior Mid-Cingulate Contributes to Achieving Goals. <i>Cortex</i>, 123, 12-29. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7381101/" target="_blank" rel="noopener noreferrer">Link</a></li>
+          <li>Sun, F. W. et al. (2016). Youthful Brains in Older Adults: Preserved Neuroanatomy in the Default Mode and Salience Networks Contributes to Youthful Memory in Superaging. <i>The Journal of Neuroscience</i>, 36(37), 9659-9668. <a href="https://www.affective-science.org/pubs/2016/youthful-brains-2016.pdf" target="_blank" rel="noopener noreferrer">Link</a></li>
+          <li>Dell'Acqua, F. et al. (2023). Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of AI on Knowledge Worker Productivity and Quality. Harvard Business School Working Paper 24-013. <a href="https://aiinstitute.hbs.edu/navigating-the-jagged-technological-frontier/" target="_blank" rel="noopener noreferrer">Link</a></li>
+          <li>Kestin, G., Miller, K. et al. (2025). AI Tutoring Outperforms In-Class Active Learning: An RCT Introducing a Novel Research-Based Design in an Authentic Educational Setting. <i>Scientific Reports</i>, 15. <a href="https://news.harvard.edu/gazette/story/2024/09/professor-tailored-ai-tutor-to-physics-course-engagement-doubled/" target="_blank" rel="noopener noreferrer">Link</a></li>
+        </ol>
+      </div>
+    </article>
+
+    <article class="essay" data-slug="la-neuroplasticidad-del-cerebro-el-valor-de-hacer-cosas-dificiles-y-el-futuro-del-trabajo-con-la-ia" lang="es" hidden>
+      <p class="back"><a class="more-link" href="#essays">← All essays</a></p>
+      <h2>La neuroplasticidad del cerebro, el valor de hacer cosas difíciles y el futuro del trabajo con la IA</h2>
+      <p class="essay-meta">Octubre 2026 &nbsp;·&nbsp; <a href="#essays/on-neuroplasticity-the-value-of-doing-hard-things-and-the-future-of-work-with-ai" hreflang="en">Read in English</a></p>
+
+      <p>El cerebro adulto cambia y evoluciona durante toda la vida, y lo hace sobre todo cuando algo le cuesta. Esa idea, que la neurociencia lleva décadas acumulando, choca de frente con la falsa promesa de la inteligencia artificial: ahorrarnos el esfuerzo.</p>
+      <p>Si lo que nos hace más listos es justo lo que la IA nos quiere quitar, ¿estamos ante la herramienta que nos va a atontar o ante el mejor entrenador mental que hemos tenido? La respuesta depende de una decisión que casi nadie se plantea cuando envía un prompt.</p>
+
+      <h3>¿Nos está atontando la IA?</h3>
+      <p>En junio de 2025, un equipo del MIT Media Lab publicó un experimento que se hizo viral. Pusieron a 54 personas a escribir ensayos repartidas en tres grupos: uno con ChatGPT, otro con un buscador y otro solo con su cabeza. Mientras escribían, les medían la actividad cerebral con un electroencefalograma. El grupo de ChatGPT mostró la conectividad cerebral más baja de los tres y a sus participantes les costaba más recordar lo que acababan de escribir. Los autores lo llamaron "deuda cognitiva".</p>
+      <p>El estudio, aunque con una muestra pequeña y sin revisión por pares, pone sobre la mesa una pregunta que muchos nos hacemos sin decirla en voz alta: si una máquina puede hacer por nosotros lo que nos cuesta, ¿qué le pasa a un cerebro que deja de esforzarse? ¿Está la IA condenada a volvernos más tontos?</p>
+
+      <h3>El cerebro cambia con lo que le cuesta</h3>
+      <p>Para contestar hay que empezar por cómo cambia un cerebro. La neuroplasticidad es la capacidad que tiene el sistema nervioso para modificar su estructura y su funcionamiento a lo largo de la vida en respuesta a las experiencias, el aprendizaje o los estímulos del entorno. No se apaga al salir de la infancia. Dura toda la vida.</p>
+      <p>Lo interesante es qué tipo de demanda funciona. En 2014, la psicóloga Denise Park y su equipo de la Universidad de Texas reclutaron a 221 personas de entre 60 y 90 años y les asignaron durante tres meses una actividad de unas quince horas semanales. Unos aprendieron algo nuevo y exigente, como fotografía digital o patchwork. Otros hicieron actividades agradables pero conocidas: reuniones sociales o pasatiempos tranquilos en casa.</p>
+      <p>Al final, la memoria episódica solo mejoró en quienes habían aprendido lo difícil. Estar activo no bastaba. Hacía falta que costara.</p>
+
+      <h3>Por qué lo fácil engaña</h3>
+      <p>La psicología del aprendizaje llegó a la misma conclusión por otro camino. Robert Bjork, de la Universidad de California en Los Ángeles, lleva desde los noventa estudiando lo que llama "dificultades deseables": condiciones que hacen que aprender sea más lento e incómodo en el momento, y que justo por eso dejan un aprendizaje más duradero.</p>
+      <p>Bjork separa dos cosas que solemos confundir: el rendimiento, que es lo que sabes hacer ahora, y el aprendizaje, que es lo que conservas y puedes usar después. Henry Roediger y Jeffrey Karpicke lo midieron en 2006 con estudiantes universitarios. Quienes releían un texto rendían mejor a los cinco minutos, pero una semana después recordaban bastante menos que quienes se habían obligado a recordarlo. Y lo más revelador: los que releían se sentían más seguros de lo que sabían.</p>
+      <p>La facilidad tiene todo el aspecto de un aprendizaje pero deja muy poco detrás.</p>
+
+      <h3>Lo difícil también vale por sí mismo</h3>
+      <p>Hasta aquí, lo difícil como medio para entrenar el cerebro. Pero hay una segunda razón para hacer cosas difíciles, menos utilitaria.</p>
+      <p>En 2018, Michael Inzlicht, Amitai Shenhav y Christopher Olivola revisaron la evidencia sobre lo que bautizaron como la "paradoja del esfuerzo": evitamos el esfuerzo siempre que podemos y, a la vez, valoramos más aquello que nos ha costado. Un mueble montado con nuestras manos nos parece mejor que uno comprado hecho. El estado de flow, ese momento de concentración total en que se pierde la noción del tiempo, solo aparece ante retos desafiantes. El esfuerzo es lo que da valor a la recompensa, y lo difícil tiene sentido precisamente porque es difícil.</p>
+      <p>La neurociencia empieza a ubicar esa tenacidad. Alexandra Touroutoglou y Lisa Feldman Barrett describen la corteza cingulada media anterior como un nodo que calcula si un esfuerzo merece la pena y sostiene la persistencia hacia una meta. En un estudio de 2016, su grupo vio que esa zona conserva un grosor juvenil en los llamados superagers, personas mayores con una memoria comparable a la de adultos mucho más jóvenes. Que hacer cosas difíciles ayude a mantenerla es todavía una hipótesis, pero apunta en la misma dirección.</p>
+
+      <h3>La misma IA puede atontar o potenciar</h3>
+      <p>Con esto, la pregunta sobre la IA cambia de forma. Lo que decide si nos atrofia es dónde ponemos la dificultad.</p>
+      <p>Dos estudios lo muestran bien. En 2023, investigadores de Harvard y del Boston Consulting Group dieron GPT-4 a 758 consultores. En las tareas que la IA dominaba, completaron un 12% más de trabajo, un 25% más rápido y con más calidad. En una tarea diseñada para quedar fuera de lo que el modelo resolvía bien, quienes usaban IA acertaron menos que quienes trabajaban sin ella: se fiaron de la máquina y dejaron de pensar. Los autores lo llamaron la "frontera irregular" de la IA.</p>
+      <p>En 2025, Gregory Kestin y Kelly Miller compararon en Harvard un tutor de IA con una clase presencial de aprendizaje activo en un curso de física con 194 alumnos. El tutor estaba diseñado con buenas prácticas pedagógicas: guiaba paso a paso y no regalaba la solución. Los alumnos aprendieron más en menos tiempo y dijeron sentirse más motivados. La misma tecnología produce efectos opuestos según si sustituye el esfuerzo o lo dirige.</p>
+
+      <h3>El mejor entrenador que hemos tenido</h3>
+      <p>Visto así, la IA puede ser el mejor entrenador que hemos tenido. Está siempre disponible, tiene paciencia infinita y puede subir el nivel del reto justo cuando el anterior deja de costar.</p>
+      <p>Bien usada, coloca a cada persona en el borde de lo que sabe, que es exactamente donde el cerebro cambia. Mal usada, elimina la parte que nos transforma y nos deja la sensación de haber aprendido, igual que a los estudiantes que releían.</p>
+      <p>El peligro está en esa sensación de fluidez, que es cómoda, parece progreso y no construye nada.</p>
+
+      <h3>La objeción: ¿no es esto nostalgia?</h3>
+      <p>La objeción más seria es que todo esto es nostalgia con bata de laboratorio. Cada generación ha temido que su tecnología nos atontara, y la calculadora o el procesador de textos nos liberaron para problemas más interesantes.</p>
+      <p>Si una máquina hace algo mejor que yo, empeñarme en hacerlo a mano parece más vanidad que virtud. Además, la paradoja del esfuerzo tiene un lado oscuro: también sobrevaloramos cosas solo porque nos costaron, aunque sean peores.</p>
+      <p>La dificultad sola no da sentido, tiene que apuntar a algo que merezca la pena. Pero la clave está en el adjetivo que usó Bjork: deseables.</p>
+      <p>No toda dificultad entrena. Hacer divisiones largas a mano no construye nada que necesitemos. Formular un argumento, detectar el error en un análisis o decidir qué importa, sí.</p>
+      <p>Delegar lo mecánico libera. Delegar el juicio nos deja sin el músculo necesario para saber si la máquina acierta, que es justo lo que les pasó a los consultores fuera de la frontera.</p>
+
+      <h3>Cómo usar la IA para entrenar el cerebro</h3>
+      <p>Entonces, ¿nos vuelve más tontos una máquina que nos ahorra esfuerzo? Solo si dejamos que nos ahorre el esfuerzo equivocado.</p>
+      <p>El cerebro se adapta a lo que le pedimos, y la IA amplía como nunca el menú de lo que podemos pedirle. Tres decisiones separan un uso del otro:</p>
+      <ol>
+        <li>Pensar primero y preguntar después, para que la máquina mejore un intento propio en lugar de sustituirlo.</li>
+        <li>Pedirle preguntas, correcciones y retos antes que respuestas.</li>
+        <li>Y medir el progreso contra quien éramos ayer, porque compararse con lo que la máquina produce en diez segundos no enseña nada.</li>
+      </ol>
+      <p>Lo difícil sigue siendo la única forma de cambiar un cerebro. Lo nuevo es que, por primera vez, tenemos una herramienta capaz de ponernos siempre la dificultad justa.</p>
+
+      <div class="refs">
+        <h3>Bibliografía</h3>
+        <ol>
+          <li>Kosmyna, N. et al. (2025). Your Brain on ChatGPT: Accumulation of Cognitive Debt when Using an AI Assistant for Essay Writing Task. arXiv:2506.08872 (preprint, sin revisión por pares). <a href="https://arxiv.org/abs/2506.08872" target="_blank" rel="noopener noreferrer">Enlace</a></li>
+          <li>Park, D. C. et al. (2014). The Impact of Sustained Engagement on Cognitive Function in Older Adults: The Synapse Project. <i>Psychological Science</i>, 25(1), 103-112. <a href="https://journals.sagepub.com/doi/10.1177/0956797613499592" target="_blank" rel="noopener noreferrer">Enlace</a></li>
+          <li>Bjork, E. L. y Bjork, R. A. (2011). Making Things Hard on Yourself, But in a Good Way: Creating Desirable Difficulties to Enhance Learning. En <i>Psychology and the Real World</i> (pp. 56-64). Worth Publishers.</li>
+          <li>Roediger, H. L. y Karpicke, J. D. (2006). Test-Enhanced Learning: Taking Memory Tests Improves Long-Term Retention. <i>Psychological Science</i>, 17(3), 249-255. <a href="https://psychology.ecu.edu/wp-content/pv-uploads/sites/216/2019/03/Roediger-Karpicke-2006.pdf" target="_blank" rel="noopener noreferrer">Enlace</a></li>
+          <li>Inzlicht, M., Shenhav, A. y Olivola, C. Y. (2018). The Effort Paradox: Effort Is Both Costly and Valued. <i>Trends in Cognitive Sciences</i>, 22(4), 337-349. <a href="https://pmc.ncbi.nlm.nih.gov/articles/6172040/" target="_blank" rel="noopener noreferrer">Enlace</a></li>
+          <li>Touroutoglou, A., Andreano, J., Dickerson, B. C. y Barrett, L. F. (2020). The Tenacious Brain: How the Anterior Mid-Cingulate Contributes to Achieving Goals. <i>Cortex</i>, 123, 12-29. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7381101/" target="_blank" rel="noopener noreferrer">Enlace</a></li>
+          <li>Sun, F. W. et al. (2016). Youthful Brains in Older Adults: Preserved Neuroanatomy in the Default Mode and Salience Networks Contributes to Youthful Memory in Superaging. <i>The Journal of Neuroscience</i>, 36(37), 9659-9668. <a href="https://www.affective-science.org/pubs/2016/youthful-brains-2016.pdf" target="_blank" rel="noopener noreferrer">Enlace</a></li>
+          <li>Dell'Acqua, F. et al. (2023). Navigating the Jagged Technological Frontier: Field Experimental Evidence of the Effects of AI on Knowledge Worker Productivity and Quality. Harvard Business School Working Paper 24-013. <a href="https://aiinstitute.hbs.edu/navigating-the-jagged-technological-frontier/" target="_blank" rel="noopener noreferrer">Enlace</a></li>
+          <li>Kestin, G., Miller, K. et al. (2025). AI Tutoring Outperforms In-Class Active Learning: An RCT Introducing a Novel Research-Based Design in an Authentic Educational Setting. <i>Scientific Reports</i>, 15. <a href="https://news.harvard.edu/gazette/story/2024/09/professor-tailored-ai-tutor-to-physics-course-engagement-doubled/" target="_blank" rel="noopener noreferrer">Enlace</a></li>
+        </ol>
+      </div>
+    </article>
   </section>
 
   <!-- ===== My projects ===== -->
@@ -542,6 +709,7 @@ footer .thanks{font-size:clamp(1.1rem,2.4vw,1.35rem);letter-spacing:-.014em;colo
     t.addEventListener('click', function(){
       var id = t.getAttribute('aria-controls');
       select(id);
+      if(id === 'essays') showEssay(null);
       history.replaceState(null, '', '#' + id);
     });
     t.addEventListener('keydown', function(e){
@@ -552,9 +720,35 @@ footer .thanks{font-size:clamp(1.1rem,2.4vw,1.35rem);letter-spacing:-.014em;colo
       history.replaceState(null, '', '#' + n.getAttribute('aria-controls'));
     });
   });
+  // Essays (deep-linkable: #essays/<slug>)
+  var essayList = document.getElementById('essay-list');
+  var essays = Array.prototype.slice.call(document.querySelectorAll('.essay'));
+  var baseTitle = document.title;
+  function showEssay(slug){
+    var found = null;
+    essays.forEach(function(a){
+      var on = a.getAttribute('data-slug') === slug;
+      a.hidden = !on;
+      if(on) found = a;
+    });
+    essayList.hidden = !!found;
+    document.title = found ? found.querySelector('h2').textContent + ' · ' + baseTitle : baseTitle;
+    return found;
+  }
+
   function fromHash(){
-    var h = location.hash.slice(1), el = h && document.getElementById(h);
-    if(el && el.classList.contains('tabpanel')) select(h);
+    var h = decodeURIComponent(location.hash.slice(1));
+    if(h.indexOf('essays/') === 0){
+      select('essays');
+      var a = showEssay(h.slice(7));
+      if(a) document.querySelector('.tabs').scrollIntoView();
+      return;
+    }
+    var el = h && document.getElementById(h);
+    if(el && el.classList.contains('tabpanel')){
+      select(h);
+      if(h === 'essays') showEssay(null);
+    }
   }
   window.addEventListener('hashchange', fromHash);
   fromHash();
