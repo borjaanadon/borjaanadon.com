@@ -184,8 +184,11 @@ h1{
 /* essays */
 .essay-links{display:flex;flex-wrap:wrap;gap:.4rem 1.6rem}
 .essay-links .more-link{margin-top:0}
-.essay{max-width:68ch}
+.essay{max-width:none}
 .essay[hidden]{display:none}
+/* an open essay is a page of its own: no hero, tabs or footer */
+body.essay-mode .hero,body.essay-mode .tabs,body.essay-mode footer{display:none}
+body.essay-mode .tabpanel{padding-top:clamp(40px,6vw,72px)}
 .essay .back{margin:0 0 clamp(24px,3.5vw,36px)}
 .essay h2{font-size:clamp(1.5rem,3vw,2.1rem);letter-spacing:-.02em;font-weight:600;line-height:1.15;margin:0 0 .6rem;text-wrap:balance}
 .essay .essay-meta{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--muted);margin:0 0 clamp(28px,4vw,40px)}
@@ -496,10 +499,10 @@ footer .thanks{font-size:clamp(1.1rem,2.4vw,1.35rem);letter-spacing:-.014em;colo
     <div class="content" id="essay-list">
       <div class="subsec">
         <h2>On neuroplasticity, the value of doing hard things and the future of work with AI</h2>
-        <p class="lead">Why the brain changes most when something is hard for it, why hard things are worth doing for their own sake, and how AI can either dull that process or become the best coach we have ever had.</p>
+        <p class="lead">Why the brain grows through what is hard, why hard things are worth doing for their own sake, and how AI can dull that or train it.</p>
         <div class="essay-links">
-          <a class="more-link" href="#essays/on-neuroplasticity-the-value-of-doing-hard-things-and-the-future-of-work-with-ai">Read in English →</a>
-          <a class="more-link" href="#essays/la-neuroplasticidad-del-cerebro-el-valor-de-hacer-cosas-dificiles-y-el-futuro-del-trabajo-con-la-ia" hreflang="es">Leer en español →</a>
+          <a class="more-link" href="#essays/on-neuroplasticity-the-value-of-doing-hard-things-and-the-future-of-work-with-ai" target="_blank" rel="noopener">Read in English →</a>
+          <a class="more-link" href="#essays/la-neuroplasticidad-del-cerebro-el-valor-de-hacer-cosas-dificiles-y-el-futuro-del-trabajo-con-la-ia" hreflang="es" target="_blank" rel="noopener">Leer en español →</a>
         </div>
       </div>
     </div>
@@ -732,6 +735,7 @@ footer .thanks{font-size:clamp(1.1rem,2.4vw,1.35rem);letter-spacing:-.014em;colo
       if(on) found = a;
     });
     essayList.hidden = !!found;
+    document.body.classList.toggle('essay-mode', !!found);
     document.title = found ? found.querySelector('h2').textContent + ' · ' + baseTitle : baseTitle;
     return found;
   }
@@ -741,7 +745,7 @@ footer .thanks{font-size:clamp(1.1rem,2.4vw,1.35rem);letter-spacing:-.014em;colo
     if(h.indexOf('essays/') === 0){
       select('essays');
       var a = showEssay(h.slice(7));
-      if(a) document.querySelector('.tabs').scrollIntoView();
+      if(a) window.scrollTo(0, 0);
       return;
     }
     var el = h && document.getElementById(h);
